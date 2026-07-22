@@ -6,14 +6,8 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Student implements Serializable {
-
-    /**
-     * Минимально допустимый возраст студента (включительно).
-     */
+  
     public static final int MIN_AGE = 1;
-    /**
-     * Максимально допустимый возраст студента (включительно).
-     */
     public static final int MAX_AGE = 149;
 
     private String name;
