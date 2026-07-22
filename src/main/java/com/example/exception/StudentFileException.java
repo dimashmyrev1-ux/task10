@@ -5,6 +5,7 @@ public class StudentFileException extends Exception {
         super(message);
     }
 
+
     public StudentFileException(String message, Throwable cause) {
         super(message, cause);
     }

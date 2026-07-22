@@ -1,9 +1,20 @@
 package com.example.model;
 
+import com.example.exception.InvalidAgeException;
+
 import java.io.Serializable;
 import java.util.Objects;
 
 public class Student implements Serializable {
+
+    /**
+     * Минимально допустимый возраст студента (включительно).
+     */
+    public static final int MIN_AGE = 1;
+    /**
+     * Максимально допустимый возраст студента (включительно).
+     */
+    public static final int MAX_AGE = 149;
 
     private String name;
     private int age;
@@ -11,8 +22,15 @@ public class Student implements Serializable {
 
     public Student(String name, int age, int grade) {
         this.name = name;
-        this.age = age;
+        this.age = validateAge(age);
         this.grade = grade;
+    }
+
+    private static int validateAge(int age) {
+        if (age < MIN_AGE || age > MAX_AGE) {
+            throw new InvalidAgeException(age, MIN_AGE, MAX_AGE);
+        }
+        return age;
     }
 
     //--------------- Геттеры-----------------------
@@ -34,13 +52,12 @@ public class Student implements Serializable {
     }
 
     public void setAge(int age) {
-        this.age = age;
+        this.age = validateAge(age);
     }
 
     public void setGrade(int grade) {
         this.grade = grade;
     }
-
 
 
     public String toString() {
